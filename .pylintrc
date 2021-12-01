@@ -3,3 +3,6 @@ disable=
     missing-class-docstring,
     missing-module-docstring,
     missing-function-docstring
+
+[isort]
+    src_paths = day1
