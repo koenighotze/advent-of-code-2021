@@ -3,11 +3,13 @@ import sys
 WINDOW_SIZE = 3
 
 
-def window(values, pos): values[pos:pos + WINDOW_SIZE]
+def window(values, pos): 
+    return values[pos:pos + WINDOW_SIZE]
 
 
 def day1(measures):
     number_of_increases = 0
+    window = lambda values, pos: values[pos : pos + WINDOW_SIZE]
     for i in range(len(measures) - WINDOW_SIZE):
         if sum(window(measures, i + 1)) > sum(window(measures, i)):
             number_of_increases += 1
