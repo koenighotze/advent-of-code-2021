@@ -19,6 +19,6 @@ jobs:
       - name: Python Linter
         uses: sunnysid3up/python-linter@v0.1-beta.7
         with:
-          black-options: "day1/*py"
-          isort-options: "--src-path ."
+          black-options: "--src-path day1/"
+          isort-options: "--src-path day1/"
           django: false
