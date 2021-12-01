@@ -29,3 +29,9 @@ jobs:
         run: flake8 . --count --show-source --statistics
       - name: Testing
         run: pytest
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npm run lint
+      
