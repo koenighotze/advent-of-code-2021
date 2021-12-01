@@ -12,11 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: day1
+        working-directory: day1/
 
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python
         uses: actions/setup-python@v2.3.1
+      - run: ls -la
       - name: Python Linter
         uses: sunnysid3up/python-linter@v0.1-beta.7
