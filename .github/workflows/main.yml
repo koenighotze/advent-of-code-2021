@@ -16,10 +16,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Python
+      - name: Setting up Python
         uses: actions/setup-python@v2.3.1
-      - run: ls -la
-      - name: Python Linter
-        uses: sunnysid3up/python-linter@v0.1-beta.7
-        with:
-          source: "day1/"
+      - name: Installing dependencies
+        run: \
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+      - name: Linting
+        run: flake8 . --count --show-source --statistics
+      - name: Testing
+        run: pytest
