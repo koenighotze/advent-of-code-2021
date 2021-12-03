@@ -76,7 +76,7 @@ jobs:
       with:
           args: ./*pl
     - name: Run ShellCheck
-      uses: ludeeus/action-shellcheck@1.0.0
+      uses: ludeeus/action-shellcheck@1.1.0
     - name: Run tests
       run: |
         ./run_test.sh part1.pl "Result: 198"
