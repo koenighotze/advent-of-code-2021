@@ -56,3 +56,22 @@ jobs:
         run: flake8 . --count --show-source --statistics
       - name: Testing
         run: pytest
+
+
+  day3:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: day3/
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: shogo82148/actions-setup-perl@v1
+      with:
+        perl-version: '5.34'
+    - name: perlcritic
+      uses: gugod/actions-perlcritic@v1.0
+    - name: Run tests
+      run: |
+        ./run_test.sh part1.pl "Result: 198"
+        ./run_test.sh part2.pl "Result: 230"
