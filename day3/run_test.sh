@@ -2,7 +2,7 @@
 script=$1
 expected=$2
 
-last_line=$(perl -w $script < input.test | tail -n 1)
+last_line=$(perl -w "$script" < input.test | tail -n 1)
 
 if [ "$last_line" = "$expected" ]; then
     echo "$0 [$script] Success"
