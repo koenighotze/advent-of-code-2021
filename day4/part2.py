@@ -1,7 +1,14 @@
 import sys
-import re
-from functools import reduce
-from common import has_won, load_data, extract_bingo_boards, extract_drawn_numbers, create_checkboard, update_checkboard, calc_score
+from common import (
+    has_won,
+    load_data,
+    extract_bingo_boards,
+    extract_drawn_numbers,
+    create_checkboard,
+    update_checkboard,
+    calc_score
+    )
+
 
 def determine_last_winning_board(boards, numbers):
     current_number_idx = 0
@@ -13,12 +20,16 @@ def determine_last_winning_board(boards, numbers):
         print(f"Next number: {current_number}")
 
         for board_number in range(len(boards)):
-            checkboards[board_number] = update_checkboard(checkboards[board_number], boards[board_number], current_number)
-            if not board_number in was_already_winner and has_won(checkboards[board_number]):
+            checkboards[board_number] = update_checkboard(
+                checkboards[board_number],
+                boards[board_number],
+                current_number)
+            if board_number not in was_already_winner and has_won(
+                    checkboards[board_number]):
                 was_already_winner.append(board_number)
                 print(f"New winner found!!! Board number {board_number}")
                 last_winner = dict(
-                    board=boards[board_number], 
+                    board=boards[board_number],
                     number=current_number,
                     check=checkboards[board_number])
                 if len(was_already_winner) == len(boards):
@@ -27,15 +38,12 @@ def determine_last_winning_board(boards, numbers):
         current_number_idx += 1
     return last_winner
 
+
 def part2(input):
     boards = extract_bingo_boards(input)
     numbers = extract_drawn_numbers(input)
     winner = determine_last_winning_board(boards, numbers)
     return calc_score(winner)
-
-def load_data(file_name):
-    with open(file=file_name, mode="r", encoding="UTF-8") as file:
-        return list(map(lambda line: line.strip(), file.readlines()))
 
 
 if __name__ == "__main__":
