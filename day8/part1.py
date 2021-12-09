@@ -1,7 +1,6 @@
 import sys
 import re
 from common import load_data
-from statistics import median
 
 
 def part1(lines):
@@ -12,15 +11,15 @@ def part1(lines):
 
         for word in re.split(r"\W+", out):
             if len(word) == 2:
-                print(word) 
+                print(word)
             counts[len(word)] += 1
 
     for i in [0, 1, 5, 6]:
         counts[i] = 0
-    
+
     print(counts)
 
-    return { 
+    return {
         'sum_of_all': sum(counts),
         '1': counts[2],
         '4': counts[4],
