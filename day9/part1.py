@@ -9,7 +9,6 @@ def low_point(x, y, input):
     left = y <= 0 or candidate < input[x][y - 1]
     right = y == len(input[0]) - 1 or candidate < input[x][y + 1]
 
-    print(f"\tA {above} B {below} L {left} R {right}")
     return above and below and left and right
 
 
@@ -19,12 +18,8 @@ def low_points(input):
     candidates = []
     for row in range(len(input)):
         for col in range(len(input[0])):
-            print(f"Checking {row},{col}")
             if low_point(row, col, input):
-                can = input[row][col]
-                print(f"\tFound candidate {can} at {row}, {col}")
                 candidates.append(input[row][col])
-    print(f"Candidates: {candidates}")
     return candidates
 
 
